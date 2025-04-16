@@ -1,20 +1,38 @@
 console.log("Hello World");
 
-computerScore = 0;
-humanScore = 0;
+let computerScore = 0;
+let humanScore = 0;
 function getComputerChoice(){
     value = Math.floor((Math.random()*3)+1);
-    console.log(value);
+    
+    const choices = ["rock", "paper", "scissors"];
+    return choices[value];
 }
 
 function getHumanChoice(){
-    guess = prompt("Enter your choice");
-    console.log(guess);
+    let guess = prompt("Enter your choice: ");
+    return guess;
 }
-getComputerChoice();
-getComputerChoice();
-getComputerChoice();
-getComputerChoice();
-getComputerChoice();
-getHumanChoice();
+
+function playRound(humanChoice, computerChoice){
+    let humanChoice = humanChoice.toLowerCase();
+    if ((computerChoice = "rock") && (humanChoice = "scissors")){
+        console.log("Computer Wins!");
+    }else if((computerChoice = "paper")&&(humanChoice = "rock")){
+        console.log("Computer Wins!");
+    }else if((computerChoice = "scissors") &&(humanChoice = "paper")){
+        console.log("Computer Wins!");
+    }else if((humanChoice="paper") &&(computerChoice = "rock")){
+        console.log("Human Wins!");
+    }else if((humanChoice="rock")&&(computerChoice="scissors")){
+        console.log("Human Wins!");
+    }else if((humanChoice="scissors")&&(computerChoice="paper")){
+        console.log("Human Wins!");
+    }else {
+        console.log("Draw!");
+    }
+}
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
 
