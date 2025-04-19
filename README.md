@@ -7,5 +7,6 @@ One thing that I specifically got to work on in this project is learning the cor
 
 Enjoy my proof of concept!
 
-
+# Adding UI
+For this time, I am planning to add a basic UI to my Rock, Paper, Scissors game since no one should ever have to type their call into a prompt window, we are far better than that. 
 

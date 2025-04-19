@@ -1,50 +1,59 @@
-
-
+let rock = document.querySelector("#rock"); 
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+let resultSection = document.querySelector(".results");
 let computerScore = 0;
 let humanScore = 0;
+let winner = '';
+let score = document.querySelector(".score");
+
 function getComputerChoice(){
     value = Math.floor((Math.random()*3));
     
     const choices = ["rock", "paper", "scissors"];
     guess = choices[value];
-    console.log("Computer choice: " + guess);
-    return choices[value];
     
+    return choices[value];
 }
 
-function getHumanChoice(){
-    let guess = prompt("Enter your choice: ");
-    console.log("Human choice: " + guess);
-    return guess;
-}
 
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase();
     if ((computerChoice === "rock") && (humanChoice === "scissors")){
-        console.log("Computer Wins!");
+        winner = "Computer Wins!";
     }else if((computerChoice === "paper")&&(humanChoice === "rock")){
-        console.log("Computer Wins!");
+        winner = "Computer Wins!";
     }else if((computerChoice === "scissors") &&(humanChoice === "paper")){
-        console.log("Computer Wins!");
+        winner = "Computer Wins!";
     }else if((humanChoice==="paper") &&(computerChoice === "rock")){
-        console.log("Human Wins!");
+        winner = "Human Wins!";
     }else if((humanChoice==="rock")&&(computerChoice==="scissors")){
-        console.log("Human Wins!");
+        winner = "Human Wins!";
     }else if((humanChoice==="scissors")&&(computerChoice==="paper")){
-        console.log("Human Wins!");
+        winner = "Human Wins!";
     }else {
-        console.log("Draw!");
+        winner = "Draw!";
     }
+    const result = document.createElement("h3");
+    const computerResult = document.createElement("h4");
+    const humanResult = document.createElement("h4");
+    result.textContent = "Winner: " + winner;
+    computerResult.textContent = "Computer Choice: " + computerChoice;
+    humanResult.textContent = "Human Choice: " + humanChoice;
+    resultSection.appendChild(computerResult);
+    resultSection.appendChild(humanResult);
+    resultSection.appendChild(result);
 }
 
-function playGame(){
+function playGame(humanChoice){
    
-    for(let i = 0; i < 5; i++){
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-    }
+    
+    
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    
 }
-playGame();
 
-
+rock.addEventListener("click", () => playGame("rock"));
+paper.addEventListener("click", () => playGame("paper"));
+scissors.addEventListener("click", () => playGame("scissors"));
